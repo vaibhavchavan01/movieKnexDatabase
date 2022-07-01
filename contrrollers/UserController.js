@@ -187,12 +187,11 @@ class MovieController {
                 release: req.body.release,
                 description: req.body.description,
                 genre_id: req.body.genre_id,
-                // release: req.body.release,
+                is_deleted:req.body.is_deleted
             })
                 .returning('movie.id')
                 .then((response) => {
                     console.log(response);
-                    // knex('movie').select()
                     return res.status(201).send(response)
                 })
 
@@ -212,14 +211,12 @@ class MovieController {
                 .catch((error) => {
                     return res.json({ success: false, message: 'bad request' });
                 })
-            // console.log('result:', user);
         } catch (error) {
             console.log(error);
         }
     }
     static upadteMovieData = async (req, res) => {
         try {
-            // console.log(req.params.id);
 
             knex('movie').update(req.body).where('id', req.params.id)
                 .then((user) => {
@@ -252,6 +249,7 @@ class PeopleController {
         try {
             knex('people').insert({
                 name: req.body.name,
+                is_deleted:req.body.is_deleted
             })
                 .returning('id')
                 .then((response) => {
@@ -275,15 +273,12 @@ class PeopleController {
                 .catch((error) => {
                     return res.json({ success: false, message: 'bad request' });
                 })
-            // console.log('result:', user);
         } catch (error) {
             console.log(error);
         }
     }
     static upadtePeopleData = async (req, res) => {
         try {
-            // console.log(req.params.id);
-
             knex('people').update(req.body).where('id', req.params.id)
                 .then((user) => {
                     if (!user) {
