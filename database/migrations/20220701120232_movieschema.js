@@ -51,7 +51,6 @@ exports.down = function(knex) {
     .dropTableIfExists("movieActor")
     .dropTableIfExists("movieDirector")
     .dropTableIfExists("movie")
-    .dropTableIfExists("users")
         .dropTableIfExists("genre")
         .dropTableIfExists("people")
 };
