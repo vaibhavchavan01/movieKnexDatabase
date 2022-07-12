@@ -3,14 +3,22 @@
 /**
  * @type { Object.<string, import("knex").Knex.Config> }
  */
+
+const config = process.env
+// console.log('config:',config);
+const path = require('path')
+// {path: path.join(__dirname,'../.env')}
 module.exports = {
 
   development: {
     client: 'postgresql',
-    connection: {
-      database: 'moviedb',
-      user:     'postgres',
-      password: 'vc'
+    connection:{
+      database:config.DATABASE,
+      user:config.USER,
+      password:config.PASSWORD,
+      // database:'moviedb',
+      // user:'postgres',
+      // password:'vc'
     },
     pool: {
       min: 2,
@@ -18,6 +26,9 @@ module.exports = {
     },
     migrations: {
       tableName: 'knex_migrations'
+    },
+    seeds: {
+      directory: './seeds'
     }
   },
 
