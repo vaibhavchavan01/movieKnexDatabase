@@ -132,7 +132,7 @@ router.patch('/:id', auth, perm, async (req, res) => {
 
 router.delete('/:id', auth, perm, async (req, res) => {
     try {
-        knex('movie').update({'is_deleted':false}).where('id', req.params.id)
+        knex('movie').update({'is_deleted':true}).where('id', req.params.id)
             .then((user) => {
                 if (!user) {
                     return res.status(400).send({ message: 'data not found' })
