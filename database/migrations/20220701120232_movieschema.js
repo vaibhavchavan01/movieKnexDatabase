@@ -27,15 +27,15 @@ exports.up = function(knex) {
         table.boolean('is_deleted').defaultTo(false);
         table.timestamps(true, true);
     })
-    .createTable('movieActor', function(table){
+    .createTable('movie_actor', function(table){
         table.increments('id').primary();
         table.integer('actor_id').unsigned().notNullable().references('id').inTable('people').onDelete('CASCADE');
         table.integer('movie_id').unsigned().notNullable().references('id').inTable('movie').onDelete('CASCADE');
         table.timestamps(true, true);    
     })
-    .createTable('movieDirector', function(table){
+    .createTable('movie_director', function(table){
         table.increments('id').primary();
-        table.integer('direcor_id').unsigned().notNullable().references('id').inTable('people').onDelete('CASCADE');
+        table.integer('director_id').unsigned().notNullable().references('id').inTable('people').onDelete('CASCADE');
         table.integer('movie_id').unsigned().notNullable().references('id').inTable('movie').onDelete('CASCADE');
         table.timestamps(true, true);    
     })
@@ -48,9 +48,9 @@ exports.up = function(knex) {
  */
 exports.down = function(knex) {
     return knex.schema
-    .dropTableIfExists("movieActor")
-    .dropTableIfExists("movieDirector")
+    .dropTableIfExists("movie_actor")
+    .dropTableIfExists("movie_director")
     .dropTableIfExists("movie")
-        .dropTableIfExists("genre")
-        .dropTableIfExists("people")
+    .dropTableIfExists("genre")
+    .dropTableIfExists("people")
 };
