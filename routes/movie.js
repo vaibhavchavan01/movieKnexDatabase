@@ -5,7 +5,6 @@ const auth = require('../middleware/auth')
 const perm = require('../middleware/user_auth')
 const movie_data = require('../validation/validation')
 const bookshelf = require('bookshelf')(knex)
-// bookshelf.plugin('registry')
 const moment = require('moment');
 require('moment-duration-format')
 
