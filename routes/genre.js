@@ -18,7 +18,7 @@ router.post('/', auth, perm, async(req, res)=>{
             return res.status(201).send(response)
         })
     } catch (error) {
-        console.log(error);
+        return res.status(400).send({ Error: error.message })
     }
 })
 
@@ -34,9 +34,8 @@ router.get('/', auth, perm, async(req, res)=>{
             .catch((error) => {
                 return res.send(error)
             })
-        // console.log('result:', user);
     } catch (error) {
-        console.log(error);
+        return res.status(400).send({ Error: error.message })
     }
 })
 
@@ -53,7 +52,7 @@ router.patch('/:id', auth, perm, async(req, res)=>{
                 return res.status(201).send({ message: 'record updated', updated_data: user })
             })
     } catch (error) {
-        console.log(error);
+        return res.status(400).send({ Error: error.message })
     }
 })
 
@@ -67,7 +66,7 @@ router.delete('/:id', auth, perm, async(req, res)=>{
                 return res.status(400).send({ message: 'record deleted' })
             })
     } catch (error) {
-        console.log(error);
+        return res.status(400).send({ Error: error.message })
     }
 })
 

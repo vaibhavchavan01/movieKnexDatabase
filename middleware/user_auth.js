@@ -6,7 +6,7 @@ const perm = function check_admin(req, res, next) {
         }
         next()
     } catch (error) {
-        console.log(error);
+        return res.status(400).send(error);
     }
 }
 module.exports = perm;

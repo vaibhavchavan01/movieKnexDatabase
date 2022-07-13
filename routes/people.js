@@ -3,16 +3,16 @@ const express = require('express');
 const router = express.Router();
 const auth =require('../middleware/auth')
 const perm = require('../middleware/user_auth')
+const people_data = require('../validation/validation')
 
 router.post('/', auth, perm, async(req, res)=>{
     try {
-        const {error} = movie_data.validate_movie(req.body)
+        const {error} = people_data.validate_people(req.body)
         if(error) return res.send(error.details[0].message)
         knex('people').select('name')
         .where({'name':req.body.name})
         .then((result)=>{
             if(Object.keys(result).length !== 0){
-                console.log('result:', result);
                 return res.status(400).json({msg:'record allready exist'});
             }
             knex('people').insert({
@@ -24,7 +24,7 @@ router.post('/', auth, perm, async(req, res)=>{
                 })
         })
     } catch (error) {
-        console.log(error);
+        return res.status(400).send({ Error: error.message })
     }
 })
 
@@ -42,7 +42,7 @@ router.get('/',auth, perm, async(req, res)=>{
                 return res.json({ success: false, message: 'bad request' });
             })
     } catch (error) {
-        console.log(error);
+        return res.status(400).send({ Error: error.message })
     }
 })
 
@@ -56,7 +56,7 @@ router.patch('/:id', auth, perm, async(req, res)=>{
                 return res.status(201).send({ message: 'record updated', updated_data: user })
             })
     } catch (error) {
-        console.log(error);
+        return res.status(400).send({ Error: error.message })
     }
 })
 
@@ -71,7 +71,7 @@ router.delete('/:id', auth, perm, async(req, res)=>{
                 return res.status(400).send({ message: 'record deleted' })
             })
     } catch (error) {
-        console.log(error);
+        return res.status(400).send({ Error: error.message })
     }
 })
 module.exports = router

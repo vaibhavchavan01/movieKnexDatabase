@@ -20,6 +20,7 @@
   "homepage": "https://github.com/vaibhavchavan01/movieKnexDatabase#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "bookshelf": "^1.2.0",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
     "crypto-js": "^4.1.1",

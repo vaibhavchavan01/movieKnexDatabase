@@ -13,8 +13,7 @@ const genre = require('./routes/genre');
 const movie = require('./routes/movie');
 const people = require('./routes/people');
 const login = require('./routes/login')
-const resetPassword = require('./routes/resetPassword');
-const movieActor = require('./routes/movieActor')
+const forgetPassword = require('./routes/forgetPassword')
 //for json response
 app.use(express.json());
 
@@ -23,8 +22,7 @@ app.use('/api/genre', genre);
 app.use('/api/movie', movie);
 app.use('/api/people', people);
 app.use('/api/login', login);
-app.use('/api/resetPassword', resetPassword);
-app.use('/api/movieActor', movieActor);
+app.use('/api/forgetPassword', forgetPassword);
 
 // how to create routes
 app.listen(port, () => {

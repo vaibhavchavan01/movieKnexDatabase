@@ -25,14 +25,14 @@ router.post('/', async(req, res)=>{
                             else {
                                 Jwt.sign({ user }, process.env.SECRETE_KEY, { expiresIn: "1d" }, (err, token) => {
                                     if (err) { res.status(404).json({ bad_request: "Data not found" }) }
-                                    res.send({ authToken: token , foo:req.istoken})
+                                    res.send({ authToken: token })
                                 })
                             }
                         })
                     }
                 })    
     } catch (error) {
-        console.log(error);
+        return res.status(400).send({ Error: error.message })
     }
 })
 
