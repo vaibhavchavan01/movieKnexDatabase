@@ -41,11 +41,10 @@ function validate_login(username){
 
 function validate_people(people){
     const people_data = joi.object({
-        name: joi.string().alphanum().min(3).max(40).trim(true).required()
+        name: joi.string().min(3).max(40).trim(true).required()
     });
     return joi.validate(people, people_data)
 }
-
 
 exports.validate_user = validateUser;
 exports.validate_genre = validate_genre;

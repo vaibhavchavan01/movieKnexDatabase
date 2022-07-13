@@ -5,9 +5,7 @@
  */
 
 const config = process.env
-// console.log('config:',config);
 const path = require('path')
-// {path: path.join(__dirname,'../.env')}
 module.exports = {
 
   development: {
