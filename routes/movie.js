@@ -9,7 +9,7 @@ const moment = require('moment');
 require('moment-duration-format')
 
 
-router.post('/', auth, async (req, res) => {
+router.post('/', auth,perm, async (req, res) => {
     const convert = moment.duration(req.body.duration, "minutes").format("HH:mm");
     // try {
     const { error } = movie_data.validate_movie(req.body)

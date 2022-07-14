@@ -2,10 +2,12 @@ const express = require('express');
 const router = express.Router();
 const knex = require('../database/connectdb')
 const bcrypt = require('bcrypt');
-// const forgetPasswordValidation = require('../validation/validation')
+const forgot_password = require('../validation/validation')
 
 router.post('/', async(req, res)=>{
     try {
+        const {error} = forgot_password.validate_forgotPassword(req.body)
+        if(error) return res.send(error.message)
         const salt =await  bcrypt.genSalt(10);
         const passwordHashed =  await bcrypt.hash(req.body.password, salt);
         knex('user').select('email').where({'email':req.body.username})
