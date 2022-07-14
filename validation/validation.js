@@ -45,11 +45,29 @@ function validate_people(people){
     });
     return joi.validate(people, people_data)
 }
+function validate_resetPassword(user){
+    const reset_password = joi.object({
+        email: joi.string().email().trim(true).required(),
+        password: joi.string().min(8).trim(true).required(), 
+        confirm_password: joi.string().min(8).trim(true).required()
+   });
+    return joi.validate(user, reset_password)
+}
+function validate_forgotPassword(user){
+    const forgot_password = joi.object({
+        email: joi.string().email().trim(true).required(),
+        password: joi.string().min(8).trim(true).required(), 
+        confirm_password: joi.string().min(8).trim(true).required()
+   });
+    return joi.validate(user, forgot_password)
+}
 
 exports.validate_user = validateUser;
 exports.validate_genre = validate_genre;
 exports.validate_movie = validate_movie;
 exports.validate_login = validate_login;
 exports.validate_people = validate_people;
+exports.validate_resetPassword = validate_resetPassword;
+exports.validate_forgotPassword = validate_forgotPassword;
 
 
