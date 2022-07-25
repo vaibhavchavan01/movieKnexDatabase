@@ -5,7 +5,9 @@
   "main": "app.js",
   "scripts": {
     "start": "node app",
-    "dev": "nodemon app"
+    "dev": "nodemon app",
+    "migrate": "",
+    "seed": "sh ./seed.sh"
   },
   "repository": {
     "type": "git",
@@ -29,7 +31,7 @@
     "express": "^4.18.1",
     "joi": "^13.1.0",
     "jsonwebtoken": "^8.5.1",
-    "knex": "^2.1.0",
+    "knex": "^2.2.0",
     "moment": "^2.29.3",
     "moment-duration-format": "^2.3.2",
     "nodemailer": "^6.7.6",

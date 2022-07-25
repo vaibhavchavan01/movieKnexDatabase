@@ -9,11 +9,18 @@ const path = require('path')
 module.exports = {
 
   development: {
-    client: 'postgresql',
+    client: 'pg',
     connection:{
-      database:config.DATABASE,
-      user:config.USER,
-      password:config.PASSWORD,
+      host: 'db',
+      database: 'docker',
+      user: 'docker',
+      password: 'postgres',
+      port: 5432
+      
+      // driver:config.DRIVER,
+      // port:config.PORT,
+      // schema:config.SCHEMA,
+      // host:config.HOST
       // database:'moviedb',
       // user:'postgres',
       // password:'vc'

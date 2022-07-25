@@ -11,7 +11,7 @@ const config = process.env
 
 router.post('/', async(req, res)=>{
     try {
-    const {error} = userValidation.validateUser(req.body)
+    const {error} = userValidation.validate_user(req.body)
     if(error) return res.send(error.message)
     const salt = await bcrypt.genSalt(10);
     const passwordHashed = await bcrypt.hash(req.body.password, salt);

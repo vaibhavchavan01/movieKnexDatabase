@@ -1,5 +1,5 @@
 const joi = require("joi");
-function validateUser(user){
+function validate_user(user){
     const userValidation = joi.object({
         name: joi.string().alphanum().min(3).max(40).trim(true).required(),
         email: joi.string().email().trim(true).required(),
@@ -62,7 +62,7 @@ function validate_forgotPassword(user){
     return joi.validate(user, forgot_password)
 }
 
-exports.validate_user = validateUser;
+exports.validate_user = validate_user;
 exports.validate_genre = validate_genre;
 exports.validate_movie = validate_movie;
 exports.validate_login = validate_login;
