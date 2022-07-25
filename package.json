@@ -5,9 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app",
-    "dev": "nodemon app",
-    "migrate": "",
-    "seed": "sh ./seed.sh"
+    "dev": "nodemon app"
   },
   "repository": {
     "type": "git",
