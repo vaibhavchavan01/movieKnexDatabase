@@ -1,0 +1,25 @@
+version: '3.3'
+
+services:
+  db:
+    image: postgres
+    environment:
+     POSTGRES_DATABASE: docker
+     POSTGRES_PASSWORD: postgres
+     POSTGRES_USER: docker 
+  moviedb:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file: ./.env
+    volumes:
+      - .:/app
+    ports:
+     - 3000:3000
+    environment:
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_HOST: db  
+      DATABASE: ${DATABASE}
+    depends_on:
+     - db

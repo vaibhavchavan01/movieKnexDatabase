@@ -54,7 +54,6 @@ router.post('/', auth,perm, async (req, res) => {
 router.get('/', auth, perm, async (req, res) => {
         const People = bookshelf.model('People', {
             hidden: ["is_deleted","created_at","updated_at","_pivot_movie_id","_pivot_director_id","_pivot_actor_id"],
-
             tableName: 'people'
           })
         const Movie = bookshelf.model('Movie', {
