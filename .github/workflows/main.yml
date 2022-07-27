@@ -49,6 +49,6 @@ jobs:
             db
           builder: ${{ steps.buildx.outputs.name }}
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/simplewhale:latest
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/movieknexdatabase:latest
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
