@@ -45,7 +45,7 @@ jobs:
           compose-file: "./docker-compose.yml"
           down-flags: "--volumes"
           services: 
-            db
+            db,
             moviedb
           builder: ${{ steps.buildx.outputs.name }}
           push: true
