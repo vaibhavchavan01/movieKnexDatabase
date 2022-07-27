@@ -44,9 +44,9 @@ jobs:
 #           file: ./Dockerfile
           compose-file: "./docker-compose.yml"
           down-flags: "--volumes"
-          services: |
-            moviedb
+          services: 
             db
+            moviedb
           builder: ${{ steps.buildx.outputs.name }}
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/movieknexdatabase:latest
