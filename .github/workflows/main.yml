@@ -40,8 +40,13 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v2
         with: 
-          context: .
-          file: ./Dockerfile
+#           context: .
+#           file: ./Dockerfile
+          compose-file: "./docker-compose.yml"
+          down-flags: "--volumes"
+          services: |
+            moviedb
+            db
           builder: ${{ steps.buildx.outputs.name }}
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/simplewhale:latest
