@@ -1,5 +1,4 @@
 version: '3.3'
-
 services:
   db:
     image: postgres
@@ -11,6 +10,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    command: gunicorn --bind 0.0.0.0:${PORT} wsgi
     env_file: ./.env
     volumes:
       - .:/app
@@ -19,7 +19,7 @@ services:
     environment:
       DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
-      DB_HOST: db  
+      DB_HOST: ${db}
       DATABASE: ${DATABASE}
     depends_on:
      - db
