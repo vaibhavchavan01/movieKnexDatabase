@@ -11,11 +11,19 @@ module.exports = {
   development: {
     client: 'pg',
     connection:{
+<<<<<<< HEAD
+      host: 'db',
+      database: 'docker',
+      user: 'docker',
+      password: 'postgres',
+      port: 5432
+=======
       host: config.HOST,
       database: config.DATABASE,
       user: config.DB_USER,
       password: config.DB_PASSWORD,
       port: config.DB_PORT
+>>>>>>> 5a32bb5457a90c5045e4b2f558b3cdc66e3a2b41
       
       // driver:config.DRIVER,
       // port:config.PORT,

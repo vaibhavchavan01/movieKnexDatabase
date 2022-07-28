@@ -1,5 +1,8 @@
 version: '3.3'
+<<<<<<< HEAD
+=======
 
+>>>>>>> 5a32bb5457a90c5045e4b2f558b3cdc66e3a2b41
 services:
   db:
     image: postgres
@@ -11,6 +14,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+<<<<<<< HEAD
+    command: gunicorn --bind 0.0.0.0:${PORT} wsgi
+=======
+>>>>>>> 5a32bb5457a90c5045e4b2f558b3cdc66e3a2b41
     env_file: ./.env
     volumes:
       - .:/app
@@ -19,7 +26,11 @@ services:
     environment:
       DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
+<<<<<<< HEAD
+      DB_HOST: ${db}
+=======
       DB_HOST: db  
+>>>>>>> 5a32bb5457a90c5045e4b2f558b3cdc66e3a2b41
       DATABASE: ${DATABASE}
     depends_on:
      - db
