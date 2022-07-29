@@ -42,7 +42,7 @@ jobs:
         with: 
           context: .
 #           file: ./Dockerfile
-          file: ./docker-compose.yml
+          compose-file: ./docker-compose.yml
 #           down-flags: "--volumes"
           services: 
             db,
