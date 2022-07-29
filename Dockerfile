@@ -15,4 +15,4 @@ WORKDIR /movieKnexDatabase
 COPY package*.json ./
 RUN npm install 
 COPY . .
-CMD ["nodemon", "app.js"]
+CMD ["nodemon", "app.js"] || ["node", "app.js"]
