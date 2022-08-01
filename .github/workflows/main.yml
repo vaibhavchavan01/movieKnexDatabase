@@ -16,40 +16,57 @@ on:
   workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
-jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+# jobs:
+#   # This workflow contains a single job called "build"
+#   build:
+#     # The type of runner that the job will run on
+#     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      - name: Check Out Repo 
-        uses: actions/checkout@v2
+#     # Steps represent a sequence of tasks that will be executed as part of the job
+#     steps:
+#       - name: Check Out Repo 
+#         uses: actions/checkout@v2
         
-      - name: Login to Docker Hub
-        uses: docker/login-action@v1
-        with:
-          username: ${{ secrets.DOCKER_HUB_USERNAME }}
-          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-      #-
-       # name: Set up Docker Buildx
-       # uses: docker/setup-buildx-action@v1
+#       - name: Login to Docker Hub
+#         uses: docker/login-action@v1
+#         with:
+#           username: ${{ secrets.DOCKER_HUB_USERNAME }}
+#           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+#       #-
+#        # name: Set up Docker Buildx
+#        # uses: docker/setup-buildx-action@v1
         
-      - name: Build and push
-        id: docker_build
-        uses: docker/build-push-action@v2
-        with: 
-          context: .
-#           file: ./Dockerfile
-          compose-file: ./docker-compose.yml
-#           down-flags: "--volumes"
-          services: 
-            db,
-            moviedb
-          builder: ${{ steps.buildx.outputs.name }}
-          push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/movieknexdatabase:latest
-      - name: Image digest
-        run: echo ${{ steps.docker_build.outputs.digest }}
+#       - name: Build and push
+#         id: docker_build
+#         uses: docker/build-push-action@v2
+#         with: 
+#           context: .
+# #           file: ./Dockerfile
+#           compose-file: ./docker-compose.yml
+# #           down-flags: "--volumes"
+#           services: 
+#             db,
+#             moviedb
+#           builder: ${{ steps.buildx.outputs.name }}
+#           push: true
+#           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/movieknexdatabase:latest
+#       - name: Image digest
+#         run: echo ${{ steps.docker_build.outputs.digest }}
          
+jobs:
+  container-job:
+    runs-on: ubuntu-latest
+    container: node:10.18-jessie
+    services:
+      postgres:
+        image: postgres
+    steps:
+      - name: Check out repository code
+#         uses: {% data reusables.actions.action-checkout %}
+      - name: Install dependencies
+        run: npm ci
+      - name: Connect to PostgreSQL
+        run: node client.js
+        env:
+          POSTGRES_HOST: postgres
+          POSTGRES_PORT: 5432
