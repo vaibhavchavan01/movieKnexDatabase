@@ -54,7 +54,7 @@ router.post('/resetPassword',auth, async(req, res)=>{
     }    
 })
 
-router.get('/', async(req, res)=>{
+router.get('/',auth, perm, async(req, res)=>{
     try {
         knex("user").select('*')
             .then((user) => {
