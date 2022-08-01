@@ -17,7 +17,7 @@ const auth = function authenticate(req, res, next) {
             next();
         })
     } catch (error) {
-        return res.send(error );
+        return res.send({ Error: errorsss.message });
     }
 }
 

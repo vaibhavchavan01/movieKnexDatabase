@@ -8,7 +8,7 @@ const config = process.env
 const path = require('path')
 module.exports = {
 
-  development: {
+  production: {
     client: 'pg',
     connection:{
       host: 'db',
@@ -37,12 +37,12 @@ module.exports = {
     }
   },
 
-  production: {
+  development: {
     client: 'postgresql',
     connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
+      database: 'moviedb',
+      user:     'postgres',
+      password: 'vc',
     },
     pool: {
       min: 2,
@@ -50,6 +50,9 @@ module.exports = {
     },
     migrations: {
       tableName: 'knex_migrations'
+    },
+    seeds: {
+      directory: './seeds'
     }
   }
 
