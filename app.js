@@ -15,19 +15,17 @@ const movie = require('./routes/movie');
 const people = require('./routes/people');
 const login = require('./routes/login')
 const forgetPassword = require('./routes/forgetPassword')
-//for json response
-
 
 app.use('/api/user', user);
 app.use('/api/genre', genre);
 app.use('/api/movie', movie);
 app.use('/api/people', people);
 app.use('/api/login', login);
-app.use('/api/forgetPassword', forgetPassword);
+app.use('/api/forget-password', forgetPassword);
 
 // how to create routes
 app.listen(port, () => {
     console.log('server listening at http://localhost:'+[port]);
 })
 
-
+module.exports = app
