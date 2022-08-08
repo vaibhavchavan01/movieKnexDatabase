@@ -40,10 +40,10 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v2
         with: 
-#           context: .
+          context: .
 #           file: ./Dockerfile
-          compose-file: "./docker-compose.yml"
-          down-flags: "--volumes"
+          compose-file: ./docker-compose.yml
+#           down-flags: "--volumes"
           services: 
             db,
             moviedb

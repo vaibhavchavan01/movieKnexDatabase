@@ -1,7 +1,7 @@
 const dotenv = require('dotenv').config();
 const express = require('express')
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 const cors = require('cors')
 
 //middleware for req.body
@@ -15,16 +15,6 @@ const movie = require('./routes/movie');
 const people = require('./routes/people');
 const login = require('./routes/login')
 const forgetPassword = require('./routes/forgetPassword')
-// for json response
-// let userdata = {
-//     name:"dipesh",
-//     email: "dipesh@gmail.com",
-//     mobile:"8308929567",
-//     password:"dipesh12"
-// }
-// if (process.env.NODE_ENV !== 'test') {
-//     app.use(logger('dev'));
-//   }
 
 app.use('/api/user', user);
 app.use('/api/genre', genre);
