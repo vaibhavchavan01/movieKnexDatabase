@@ -67,8 +67,8 @@ router.delete('/:id', auth, perm, async(req, res)=>{
                 if (!user) {
                     return res.status(400).send({ message: 'data not found' })
                 }
-                knex('people')
-                return res.status(400).send({ message: 'record deleted' })
+                // knex('people')
+                return res.status(204).send({ message: 'record deleted' })
             })
     } catch (error) {
         return res.status(400).send({ Error: error.message })

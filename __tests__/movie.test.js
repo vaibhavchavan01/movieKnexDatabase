@@ -5,16 +5,16 @@ var server = request.agent("http://localhost:3000")
 
 describe('movie API Routes', function () {
 
-	// beforeEach(() => {
-	// 	return knex.migrate.rollback()
-	// 		.then(() => knex.migrate.latest())
-	// 		.then(() => knex.seed.run())
-	// });
+	beforeEach(() => {
+		return knex.migrate.rollback()
+			.then(() => knex.migrate.latest())
+			.then(() => knex.seed.run())
+	});
     describe('movie POST request', () => {
 		it('It should POST movie records', (done) => {
 			server
 				.post('/api/movie')
-                .set('Authorization','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjpbeyJlbWFpbCI6InZhaWJoYXZAZ21haWwuY29tIiwibW9iaWxlIjoiNzcwOTI3MjE0MiIsInBhc3N3b3JkIjoiJDJiJDEwJGt5aW1EeU1Cb0ZBVGtjeWZtUWtHT2VvVW91RVVLTWhQRm1TWS91NHlmTk9kb3lzSXZVZ3htIiwiaWQiOjEsImlzX2FkbWluIjp0cnVlfV0sImlhdCI6MTY1OTk1Njk0MiwiZXhwIjoxNjYwMDQzMzQyfQ.Rn39sB8mKUJasLe0AtyIoRurnScMjkbsMfKGJIkPlC0')
+                .set('Authorization','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjpbeyJlbWFpbCI6InZhaWJoYXZAZ21haWwuY29tIiwibW9iaWxlIjoiNzcwOTI3MjE0MiIsInBhc3N3b3JkIjoiJDJiJDEwJGFpMTFGbHpOLkIvYlc0ZjdLaG9rNy40UDVkQUVZUzFDOFJ4eW1STUJZZWNIUVN0WnZLdU5HIiwiaWQiOjEsImlzX2FkbWluIjp0cnVlfV0sImlhdCI6MTY2MDAyODY1MiwiZXhwIjoxNjYwMTE1MDUyfQ.T2w5kBCt5oRdmC9uS5s9cK-mXh0GUbnKP4EF7ClSqFk')
                 .send({
                     title: "Dangal",
                     language: "Hindi",
@@ -27,7 +27,7 @@ describe('movie API Routes', function () {
                 })
 				.expect(201)
 				.end((err, res) => {
-                    // console.log(res.body);
+                    console.log(res.body);
 					if (err) throw (err)
 					done()
 				})
@@ -38,7 +38,9 @@ describe('movie GET request', () => {
     it('It should GET movie records', (done) => {
         server
             .get('/api/movie')
-            .set('Authorization','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjpbeyJlbWFpbCI6InZhaWJoYXZAZ21haWwuY29tIiwibW9iaWxlIjoiNzcwOTI3MjE0MiIsInBhc3N3b3JkIjoiJDJiJDEwJGt5aW1EeU1Cb0ZBVGtjeWZtUWtHT2VvVW91RVVLTWhQRm1TWS91NHlmTk9kb3lzSXZVZ3htIiwiaWQiOjEsImlzX2FkbWluIjp0cnVlfV0sImlhdCI6MTY1OTk1Njk0MiwiZXhwIjoxNjYwMDQzMzQyfQ.Rn39sB8mKUJasLe0AtyIoRurnScMjkbsMfKGJIkPlC0')
+            .set('Authorization','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjpbeyJlbWFpbCI6InZhaWJoYXZAZ21haWwuY29tIiwibW9iaWxlIjoiNzcwOTI3MjE0MiIsInBhc3N3b3JkIjoiJDJiJDEwJGFpMTFGbHpOLkIvYlc0ZjdLaG9rNy40UDVkQUVZUzFDOFJ4eW1STUJZZWNIUVN0WnZLdU5HIiwiaWQiOjEsImlzX2FkbWluIjp0cnVlfV0sImlhdCI6MTY2MDAyODY1MiwiZXhwIjoxNjYwMTE1MDUyfQ.T2w5kBCt5oRdmC9uS5s9cK-mXh0GUbnKP4EF7ClSqFk')
+            .set('Accept', 'application/json')
+            .expect('Content-Type', /json/)
             .expect(200)
             .end((err, res) => {
                 console.log(res.body);

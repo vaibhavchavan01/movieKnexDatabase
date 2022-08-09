@@ -67,7 +67,7 @@ router.get('/', auth, perm, async (req, res) => {
               }
           })
         return Movie.fetchAll({withRelated:['actor','director']}).then((director) => {
-        return res.send(director);
+        return res.status(200).send(director);
         })
        .catch((error) => {
         return res.status(400).send({ Error: error.message })

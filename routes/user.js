@@ -24,7 +24,7 @@ router.post('/', async(req, res)=>{
         })
             .returning('id', req.body)
             .then((response) => {
-                    res.status(200).json({response})
+                    res.status(201).json({response})
             })
     } catch (error) {
         return res.status(400).send({ Error: error.message })
@@ -61,7 +61,7 @@ router.get('/',auth, perm, async(req, res)=>{
                 if (!user) {
                     return res.status(400).send({ message: 'data not found' })
                 }
-                return res.status(201).send(user)
+                return res.status(200).send(user)
             })
             .catch((error) => {
                 return res.json({ success: false, message: 'bad request' });
@@ -92,7 +92,7 @@ router.delete('/:id',auth, perm, async(req, res)=>{
                 if (!user) {
                     return res.status(400).send({ message: 'data not found' })
                 }
-                return res.status(201).send({ message: 'record updated', updated_data: user })
+                return res.status(204).send({ message: 'record updated', updated_data: user })
             })
     } catch (error) {
         return res.status(400).send({ Error: error.message })

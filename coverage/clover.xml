@@ -1,20 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1659966739396" clover="3.2.0">
-  <project timestamp="1659966739396" name="All files">
-    <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0" elements="8" coveredelements="8" complexity="0" loc="8" ncloc="8" packages="1" files="2" classes="2"/>
-    <file name="connectdb.js" path="/home/vaibhav/Amazatic/MERN/NodeJs/movieKnexDatabase/database/connectdb.js">
-      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <line num="2" count="1" type="stmt"/>
-      <line num="3" count="1" type="stmt"/>
-      <line num="4" count="1" type="stmt"/>
-      <line num="5" count="1" type="stmt"/>
-      <line num="9" count="1" type="stmt"/>
-    </file>
-    <file name="knexfile.js" path="/home/vaibhav/Amazatic/MERN/NodeJs/movieKnexDatabase/database/knexfile.js">
-      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <line num="7" count="1" type="stmt"/>
-      <line num="8" count="1" type="stmt"/>
-      <line num="9" count="1" type="stmt"/>
-    </file>
+<coverage generated="1660036531350" clover="3.2.0">
+  <project timestamp="1660036531350" name="All files">
+    <metrics statements="61" coveredstatements="61" conditionals="0" coveredconditionals="0" methods="13" coveredmethods="13" elements="74" coveredelements="74" complexity="0" loc="61" ncloc="61" packages="3" files="7" classes="7"/>
+    <package name="database">
+      <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="connectdb.js" path="/home/amazatic/amazatic/node/movieKnexDatabase/database/connectdb.js">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+      </file>
+      <file name="knexfile.js" path="/home/amazatic/amazatic/node/movieKnexDatabase/database/knexfile.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="database.migrations">
+      <metrics statements="40" coveredstatements="40" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="10"/>
+      <file name="20220701120232_movieschema.js" path="/home/amazatic/amazatic/node/movieKnexDatabase/database/migrations/20220701120232_movieschema.js">
+        <metrics statements="29" coveredstatements="29" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="7"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
+        <line num="49" count="1" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
+      </file>
+      <file name="20220703125242_userschema.js" path="/home/amazatic/amazatic/node/movieKnexDatabase/database/migrations/20220703125242_userschema.js">
+        <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="database.seeds">
+      <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+      <file name="genre.js" path="/home/amazatic/amazatic/node/movieKnexDatabase/database/seeds/genre.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+      </file>
+      <file name="people.js" path="/home/amazatic/amazatic/node/movieKnexDatabase/database/seeds/people.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+      </file>
+      <file name="user.js" path="/home/amazatic/amazatic/node/movieKnexDatabase/database/seeds/user.js">
+        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+      </file>
+    </package>
   </project>
 </coverage>

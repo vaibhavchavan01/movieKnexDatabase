@@ -1,5 +1,5 @@
 // Update with your config settings.
-
+const dotenv = require('dotenv')
 /**
  * @type { Object.<string, import("knex").Knex.Config> }
  */
@@ -17,13 +17,6 @@ module.exports = {
       password: 'postgres',
       port: 5432
       
-      // driver:config.DRIVER,
-      // port:config.PORT,
-      // schema:config.SCHEMA,
-      // host:config.HOST
-      // database:'moviedb',
-      // user:'postgres',
-      // password:'vc'
     },
     pool: {
       min: 2,
@@ -40,9 +33,9 @@ module.exports = {
   development: {
     client: 'postgresql',
     connection: {
-      database: 'moviedb',
-      user:     'postgres',
-      password: 'vc',
+      database: process.env.DEV_DATABASE || 'moviedb',
+      user:     process.env.DEV_USER || 'postgres',
+      password: process.env.PASSWORD || 'vc',
     },
     pool: {
       min: 2,
@@ -53,6 +46,26 @@ module.exports = {
     },
     seeds: {
       directory: './seeds'
+    }
+  },
+  test: {
+    client: 'postgresql',
+    connection: {
+      database: process.env.TEST_DATABASE || 'test',
+      user:     process.env.TEST_USER || 'test',
+      password: process.env.TEST_PASSWORD || 'test',
+    },
+    pool: {
+      min: 2,
+      max: 10
+    },
+    migrations: {
+      tableName: 'knex_migrations',
+      directory: __dirname+'/migrations'
+    
+    },
+    seeds: {
+      directory: __dirname+'/seeds'
     }
   }
 
