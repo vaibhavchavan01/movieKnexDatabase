@@ -48,6 +48,8 @@ router.get('/',auth, perm, async(req, res)=>{
 
 router.patch('/:id', auth, perm, async(req, res)=>{
     try {
+        const {error} = people_data.validate_people(req.body)
+        if(error) return res.send(error.details[0].message)
         knex('people').update(req.body).where('id', req.params.id)
             .then((user) => {
                 if (!user) {

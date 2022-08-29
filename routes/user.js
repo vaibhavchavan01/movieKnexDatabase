@@ -11,8 +11,8 @@ const config = process.env
 
 router.post('/', async(req, res)=>{
     try {
-    const {error} = userValidation.validate_user(req.body)
-    if(error) return res.send(error.message)
+    const {error} = userValidation.validate_user(req, res)
+    if(error) return res.status(400).send(error.message)
     const salt = await bcrypt.genSalt(10);
     const passwordHashed = await bcrypt.hash(req.body.password, salt);
     
@@ -33,8 +33,8 @@ router.post('/', async(req, res)=>{
 
 router.post('/resetPassword',auth, async(req, res)=>{
     try {
-        const {error} = reset_password.validate_resetPassword(req.body)
-        if(error) return res.send(error.message)
+        // const {error} = reset_password.validate_resetPassword(req.body)
+        // if(error) return res.status(400).send(error.message)
         const userid=req.decoded['user'][0]
         const oldPassword= await bcrypt.compare(req.body.oldPassword, userid['password'])
         if(!oldPassword){
@@ -73,11 +73,13 @@ router.get('/',auth, perm, async(req, res)=>{
 
 router.patch('/:id',auth, perm, async(req, res)=>{
     try {
+        const {error} = userValidation.validate_user(req.body)
+        if(error) return res.status(400).send(error.message)
         knex('user').update(req.body).where('id', req.params.id)
             .then((user) => {
                 if (!user) {
-                    return res.status(400).send({ message: 'data not found' })
-                }
+                    return res.status(404).send({ message: 'data not found' })
+                    }
                 return res.status(201).send({ message: 'record updated', updated_data: user })
             })
     } catch (error) {

@@ -7,7 +7,8 @@
     "start": "node app",
     "dev": "nodemon app",
     "test": "jest --detectOpenHandles",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "test:cvrg": "jest --coverage"
   },
   "repository": {
     "type": "git",
